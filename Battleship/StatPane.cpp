@@ -18,3 +18,12 @@ void StatPane::Draw(){
 
 StatPane::~StatPane(){
 }
+
+void StatPane::DrawTurn(int turn){
+  wattron(m_pWindow, COLOR_PAIR(2));
+  mvwprintw(m_pWindow, 5, 2, "Turn : ");
+  mvwprintw(m_pWindow, 5, 10, "%d", turn);
+  wattroff(m_pWindow, COLOR_PAIR(2));
+
+  wrefresh(m_pWindow);
+}

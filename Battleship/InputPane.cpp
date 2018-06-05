@@ -16,17 +16,28 @@ void InputPane::Draw(){
   wrefresh(m_pWindow);
 }
 
-Position InputPane::GetInput(){
-  char input[3] = {NULL};
-  Position inputPosition;
-
+string InputPane::GetInput(){
+  char input[3];
   wattron(m_pWindow, COLOR_PAIR(3));
   mvwscanw(m_pWindow, 2, 10, "%s", input);
+  mvwprintw(m_pWindow, 2, 13, "echo:");
+  mvwprintw(m_pWindow, 2, 18, "%s", input);
   wattroff(m_pWindow, COLOR_PAIR(3));
   wrefresh(m_pWindow);
-
-  inputPosition.x = input[0] - 'A';
-  inputPosition.y = input[1] - '0';
-
-  return inputPosition;
+  return input;
 }
+
+// Position InputPane::GetInput(){
+//   char input[3] = {NULL};
+//   Position inputPosition;
+//
+//   wattron(m_pWindow, COLOR_PAIR(3));
+//   mvwscanw(m_pWindow, 2, 10, "%s", input);
+//   wattroff(m_pWindow, COLOR_PAIR(3));
+//   wrefresh(m_pWindow);
+//
+//   inputPosition.x = input[0] - 'A';
+//   inputPosition.y = input[1] - '0';
+//
+//   return inputPosition;
+// }

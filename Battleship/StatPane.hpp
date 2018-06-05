@@ -9,4 +9,5 @@ public:
   StatPane(int x, int y, int width, int height);
   ~StatPane();
   virtual void Draw();
+  void DrawTurn(int turn);
 };

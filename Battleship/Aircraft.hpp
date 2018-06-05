@@ -7,5 +7,4 @@
 class Aircraft : public Ship {
 public:
   Aircraft(string shipName);
-
 };

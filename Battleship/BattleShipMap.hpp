@@ -12,6 +12,7 @@ public:
   ~BattleShipMap();
 
   void Draw();
+  void DrawShip(int x, int y);
 
   char m_mapData[Map_SIZE][Map_SIZE];
 };

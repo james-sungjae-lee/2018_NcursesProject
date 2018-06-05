@@ -6,4 +6,5 @@ Cruiser::Cruiser(string shipName) : Ship() {
   this->m_Type = CRUISER;
   this->m_Size = 3;
   this->m_Position = new Position[3];
+  this->Destroyed = false;
 }

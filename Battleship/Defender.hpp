@@ -4,13 +4,12 @@
 #pragma once
 #include "Player.hpp"
 #include "Ship.hpp"
+#include <cstdlib>
+#include <ctime>
+
 class Defender : public Player{
 public:
   Defender();
-  void setShip(Ship* s){
-    for (size_t i = 0; i < s->GetSize(); i++) {
-      m_pMap->m_mapData[s->m_Position[i].x][s->m_Position[i].y] = s->m_Name[0];
-    }
-    m_pMap->Draw();
-  }
+  void setShip(Ship* ship);
+  char CheckHit(string input);
 };

@@ -27,4 +27,6 @@ public:
   Position *m_Position; // 배의 포지션
   int m_Size; // 배의 사이즈
   ShipType m_Type; // 배의 타입
+  bool Destroyed;
+
 };

@@ -3,7 +3,15 @@
 void BattleShipApp::Play() {
   Init();
   Render();
-  Update();
+
+  for (size_t i = 0; i < 3; i++) {
+    Update();
+    getch();
+  }
+  //
+  // while (m_pGameManager->GameOver() == false) {
+  //
+  // }
   Destroy();
 }
 
@@ -17,11 +25,11 @@ void BattleShipApp::Init() {
   init_pair(2, COLOR_CYAN, COLOR_BLACK);
   init_pair(3, COLOR_YELLOW, COLOR_BLACK);
 
-  m_pStatPane = new StatPane(30, 3, 30, 6);
+  m_pStatPane = new StatPane(30, 3, 30, 7);
   m_pInputPane = new InputPane(30, 15, 30, 4);
   m_pGameManager = new GameManager();
+  turn = 0;
 
-  m_pGameManager -> Init();
 }
 
 void BattleShipApp::Render() {
@@ -29,7 +37,7 @@ void BattleShipApp::Render() {
 
   m_pStatPane -> Draw();
   m_pInputPane -> Draw();
-
+  m_pGameManager -> Init();
   refresh();
 }
 
@@ -40,6 +48,11 @@ void BattleShipApp::Destroy() {
 
 void BattleShipApp::Update() {
 
+  turn ++;
+  m_pStatPane->DrawTurn(turn);
+  input = m_pInputPane->GetInput();
+  m_pGameManager->input = input;
+  m_pGameManager->CheckMap(input);
 
 }
 

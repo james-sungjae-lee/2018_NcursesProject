@@ -3,7 +3,7 @@
 BattleShipMap::BattleShipMap(int y) : Pane(4, y, Map_SIZE + 4, Map_SIZE + 2){
   for (size_t i = 0; i < Map_SIZE; i++) {
     for (size_t j = 0; j < Map_SIZE; ++j) {
-      m_mapData[i][j] = '0';
+      m_mapData[i][j] = '-';
     }
   }
 
@@ -26,5 +26,12 @@ void BattleShipMap::Draw(){
     }
   }
   wattroff(m_pWindow, COLOR_PAIR(1));
+  wrefresh(m_pWindow);
+}
+
+void BattleShipMap::DrawShip(int x, int y){
+  wattron(m_pWindow,COLOR_PAIR(1));
+  mvwprintw(m_pWindow,x+1,y+2,"%c",m_mapData[x][y]);
+  wattroff(m_pWindow,COLOR_PAIR(1));
   wrefresh(m_pWindow);
 }

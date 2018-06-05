@@ -12,7 +12,6 @@ public:
   InputPane(int x, int y, int width, int height);
   ~InputPane();
 
-  Position GetInput();
-
   virtual void Draw();
+  string GetInput();
 };

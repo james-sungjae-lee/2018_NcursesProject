@@ -6,4 +6,5 @@ Destroyer::Destroyer(string shipName) : Ship(){
   this->m_Type = DESTROYER;
   this->m_Size = 2;
   this->m_Position = new Position[2];
+  this->Destroyed = false;
 }

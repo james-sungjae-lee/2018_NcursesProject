@@ -10,10 +10,14 @@
 #include "Cruiser.hpp"
 #include "Destroyer.hpp"
 
+#include <string>
+
 class GameManager{
 public:
   GameManager();
   void Init();
+  bool GameOver();
+  void CheckMap(string);
 
   Attacker* m_pAttacker;
   Defender* m_pDefender;
@@ -24,4 +28,5 @@ public:
   Destroyer* m_pDestroyer1;
   Destroyer* m_pDestroyer2;
 
+  string input;
 };
