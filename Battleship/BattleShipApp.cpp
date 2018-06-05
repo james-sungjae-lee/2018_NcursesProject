@@ -3,15 +3,9 @@
 void BattleShipApp::Play() {
   Init();
   Render();
-
-  for (size_t i = 0; i < 3; i++) {
+  while (m_pGameManager->GameOver() == false) {
     Update();
-    getch();
   }
-  //
-  // while (m_pGameManager->GameOver() == false) {
-  //
-  // }
   Destroy();
 }
 

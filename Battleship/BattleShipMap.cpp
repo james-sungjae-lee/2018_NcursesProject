@@ -30,8 +30,8 @@ void BattleShipMap::Draw(){
 }
 
 void BattleShipMap::DrawShip(int x, int y){
-  wattron(m_pWindow,COLOR_PAIR(1));
-  mvwprintw(m_pWindow,x+1,y+2,"%c",m_mapData[x][y]);
-  wattroff(m_pWindow,COLOR_PAIR(1));
+  wattron(m_pWindow,COLOR_PAIR(2));
+  mvwprintw(m_pWindow,x+1,y+2,"%c", m_mapData[x][y]);
+  wattroff(m_pWindow,COLOR_PAIR(2));
   wrefresh(m_pWindow);
 }

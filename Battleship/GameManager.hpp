@@ -18,6 +18,7 @@ public:
   void Init();
   bool GameOver();
   void CheckMap(string);
+  void MinusHP(Position p);
 
   Attacker* m_pAttacker;
   Defender* m_pDefender;
