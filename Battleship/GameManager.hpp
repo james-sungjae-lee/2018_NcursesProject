@@ -19,6 +19,7 @@ public:
   bool GameOver();
   void CheckMap(string);
   void MinusHP(Position p);
+  string DestroyedCheck(string input);
 
   Attacker* m_pAttacker;
   Defender* m_pDefender;
@@ -30,4 +31,5 @@ public:
   Destroyer* m_pDestroyer2;
 
   string input;
+  char HitOrMiss;
 };

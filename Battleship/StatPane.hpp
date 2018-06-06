@@ -3,6 +3,8 @@
 // 학번 : 20132651 이름 : 이성재
 #pragma once
 #include "Pane.hpp"
+#include <string>
+using namespace std;
 
 class StatPane : Pane{
 public:
@@ -10,4 +12,6 @@ public:
   ~StatPane();
   virtual void Draw();
   void DrawTurn(int turn);
+  void GameWin(int turn);
+  void ShipDestroyed(string ShipName);
 };

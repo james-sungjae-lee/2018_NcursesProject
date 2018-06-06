@@ -27,3 +27,33 @@ void StatPane::DrawTurn(int turn){
 
   wrefresh(m_pWindow);
 }
+
+void StatPane::GameWin(int turn){
+  wattron(m_pWindow, COLOR_PAIR(2));
+  mvwprintw(m_pWindow, 5, 1, " CONGRATURATION !! TURN : ");
+  mvwprintw(m_pWindow, 5, 26, "%d", turn);
+  wattroff(m_pWindow, COLOR_PAIR(2));
+  wrefresh(m_pWindow);
+}
+
+void StatPane::ShipDestroyed(string ShipName){
+  char shipname[ShipName.size() + 1];
+  int i;
+  for (i = 0; i < ShipName.size(); i++) {
+    shipname[i] = ShipName[i];
+  }
+  shipname[i] = '\n';
+
+  if (ShipName[0] == 'X') {
+    wattron(m_pWindow, COLOR_PAIR(2));
+    mvwprintw(m_pWindow, 6, 1, "                    ");
+    wattroff(m_pWindow, COLOR_PAIR(2));
+    wrefresh(m_pWindow);
+  }else{
+    wattron(m_pWindow, COLOR_PAIR(2));
+    mvwprintw(m_pWindow, 6, 1, " You Destroyed ");
+    mvwprintw(m_pWindow, 6, 16, "%s", shipname);
+    wattroff(m_pWindow, COLOR_PAIR(2));
+    wrefresh(m_pWindow);
+  }
+}

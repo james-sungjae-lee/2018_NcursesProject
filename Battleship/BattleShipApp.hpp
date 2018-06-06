@@ -26,4 +26,5 @@ protected:
 
   string input;
   int turn;
+  string DestroyedShip;
 };

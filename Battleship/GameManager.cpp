@@ -76,7 +76,6 @@ void GameManager::MinusHP(Position p){
 }
 
 void GameManager::CheckMap(string input){
-  char HitOrMiss;
   Position p;
   p.x = input[0] - 'A';
   p.y = input[1] - '0';
@@ -85,4 +84,50 @@ void GameManager::CheckMap(string input){
     MinusHP(p);
   }
   m_pAttacker->CheckHit(input, HitOrMiss);
+}
+
+string GameManager::DestroyedCheck(string input){
+  Position p;
+  p.x = input[0] - 'A';
+  p.y = input[1] - '0';
+  if (HitOrMiss == 'M') {
+    return "X";
+  }else{
+    for (size_t i = 0; i < m_pAircraft->GetSize(); i++) {
+      if (m_pAircraft->GetPosition()[i].x == p.x && m_pAircraft->GetPosition()[i].y == p.y) {
+        if (m_pAircraft->m_HP == 0) {
+          return m_pAircraft->GetName();
+        }
+      }
+    }
+    for (size_t i = 0; i < m_pBattleship->GetSize(); i++) {
+      if (m_pBattleship->GetPosition()[i].x == p.x && m_pBattleship->GetPosition()[i].y == p.y) {
+        if (m_pBattleship->m_HP == 0) {
+          return m_pBattleship->GetName();
+        }
+      }
+    }
+    for (size_t i = 0; i < m_pCruiser->GetSize(); i++) {
+      if (m_pCruiser->GetPosition()[i].x == p.x && m_pCruiser->GetPosition()[i].y == p.y) {
+        if (m_pCruiser->m_HP == 0) {
+          return m_pCruiser->GetName();
+        }
+      }
+    }
+    for (size_t i = 0; i < m_pDestroyer1->GetSize(); i++) {
+      if (m_pDestroyer1->GetPosition()[i].x == p.x && m_pDestroyer1->GetPosition()[i].y == p.y) {
+        if (m_pDestroyer1->m_HP == 0) {
+          return m_pDestroyer1->GetName();
+        }
+      }
+    }
+    for (size_t i = 0; i < m_pDestroyer2->GetSize(); i++) {
+      if (m_pDestroyer2->GetPosition()[i].x == p.x && m_pDestroyer2->GetPosition()[i].y == p.y) {
+        if (m_pDestroyer2->m_HP == 0) {
+          return m_pDestroyer2->GetName();
+        }
+      }
+    }
+    return "X";
+  }
 }
