@@ -1,5 +1,4 @@
 #include "StatPane.hpp"
-#include "Ship.hpp"
 
 StatPane::StatPane(int x, int y, int width, int height) : Pane(x, y, width, height){
   mvwprintw(m_pWindow, 0, 3, " < STATUS > ");
@@ -42,11 +41,11 @@ void StatPane::ShipDestroyed(string ShipName){
   for (i = 0; i < ShipName.size(); i++) {
     shipname[i] = ShipName[i];
   }
-  shipname[i] = '\n';
+  shipname[i] = NULL;
 
   if (ShipName[0] == 'X') {
     wattron(m_pWindow, COLOR_PAIR(2));
-    mvwprintw(m_pWindow, 6, 1, "                    ");
+    mvwprintw(m_pWindow, 6, 1, "                          ");
     wattroff(m_pWindow, COLOR_PAIR(2));
     wrefresh(m_pWindow);
   }else{
