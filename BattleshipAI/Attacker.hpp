@@ -8,8 +8,8 @@
 using namespace std;
 
 class Attacker : public Player{
-  BattleShipMap *attackMap;
 public:
+  BattleShipMap *m_pMap;
   Attacker();
   void CheckHit(Position input, char HitOrMiss);
 };

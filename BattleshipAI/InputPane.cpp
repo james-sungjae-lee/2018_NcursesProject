@@ -24,7 +24,6 @@ Position InputPane::GetInput(){
   mvwprintw(m_pWindow, 2, 10, "    ");
   wattroff(m_pWindow, COLOR_PAIR(3));
   wrefresh(m_pWindow);
-  input[1] --;
   inputToPosition.x = input[0] - 'A';
   inputToPosition.y = input[1] - '0';
   return inputToPosition;

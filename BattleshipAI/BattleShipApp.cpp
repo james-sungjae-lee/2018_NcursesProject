@@ -44,12 +44,6 @@ void BattleShipApp::Init(){
   m_pGameManager = new GameManager();
   turn = 0;
   DestroyedShip = "X";
-
-  for (size_t i = 0; i < 8; i++) {
-    for (size_t j = 0; j < 8; j++) {
-      AIAttackMap[i][j] = 0;
-    }
-  }
 }
 
 void BattleShipApp::Render(){
@@ -77,16 +71,62 @@ void BattleShipApp::Update(){
 Position BattleShipApp::GetInputAI(){
   int x, y;
   Position returnPosition;
+  Position pushPosition;
+
+  for (size_t x = 0; x < 8; x++) {
+    for (size_t y = 0; y < 8; y++) {
+      AIAttackMap[x][y] = m_pGameManager->m_pAttacker->m_pMap->m_mapData[x][y];
+      if (AIAttackMap[x][y] == 'H') {
+        if (x + 1 < 8 && AIAttackMap[x+1][y] == '-') {
+          pushPosition.x = x + 1;
+          pushPosition.y = y;
+          nextAttack.push_back(pushPosition);
+        }
+        if (x - 1 > -1 && AIAttackMap[x-1][y] == '-') {
+          pushPosition.x = x - 1;
+          pushPosition.y = y;
+          nextAttack.push_back(pushPosition);
+        }
+        if (y + 1 < 8 && AIAttackMap[x][y+1] == '-') {
+          pushPosition.x = x;
+          pushPosition.y = y + 1;
+          nextAttack.push_back(pushPosition);
+        }
+        if (y - 1 > -1 && AIAttackMap[x][y - 1] == '-') {
+          pushPosition.x = x;
+          pushPosition.y = y - 1;
+          nextAttack.push_back(pushPosition);
+        }
+      }
+    }
+  }
+
   while (true) {
+
     x = rand()%8;
     y = rand()%8;
-    if (AIAttackMap[x][y] == 1) {
-      continue;
-    }else{
-      AIAttackMap[x][y] = 1;
+
+    while (true) {
+      if (!nextAttack.empty()) {
+        returnPosition = nextAttack.back();
+        if (AIAttackMap[returnPosition.x][returnPosition.y] == '-') {
+          nextAttack.pop_back();
+          return returnPosition;
+        }else{
+          nextAttack.pop_back();
+          continue;
+        }
+      }else{
+        break;
+      }
+    }
+
+    if (AIAttackMap[x][y] == '-') {
       returnPosition.x = x;
       returnPosition.y = y;
       return returnPosition;
+    }else{
+      continue;
     }
   }
 }

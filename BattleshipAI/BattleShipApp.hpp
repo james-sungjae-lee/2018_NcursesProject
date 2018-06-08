@@ -5,6 +5,7 @@
 #include "StatPane.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 class BattleShipApp{
 public:
@@ -28,6 +29,7 @@ protected:
   Position input;
   int turn;
   string DestroyedShip;
-  int AIAttackMap[8][8];
+  char AIAttackMap[8][8];
+  std::vector<Position> nextAttack;
 
 };
