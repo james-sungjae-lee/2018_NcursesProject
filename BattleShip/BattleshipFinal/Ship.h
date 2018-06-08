@@ -22,11 +22,11 @@ public:
   bool destroyed();
   void SetPosition(Position *p);
 
-  int m_HP; // 배의 체력
-  string m_Name; // 배의 이름
-  Position *m_Position; // 배의 포지션
-  int m_Size; // 배의 사이즈
-  ShipType m_Type; // 배의 타입
+  int m_HP;
+  string m_Name;
+  Position *m_Position;
+  int m_Size;
+  ShipType m_Type; 
   bool Destroyed;
 
 };

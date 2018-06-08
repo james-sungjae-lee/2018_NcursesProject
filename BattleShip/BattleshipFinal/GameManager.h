@@ -1,11 +1,11 @@
 // C++ BattleShip Project
-// 작성일자 2018-06-02
+// 작성일자 2018-06-08
 // 학번 : 20132651 이름 : 이성재
 #pragma once
-#include "Attacker.h"   // 공격자 객체 생성을 위한 헤더파일
-#include "Defender.h"   // 수비자 객체 생성을 위한 헤더파일
+#include "Attacker.h"
+#include "Defender.h"
 
-#include "Aircraft.h"   // 전투함들의 객체 생성을 위한 헤더파일
+#include "Aircraft.h"
 #include "Battleship.h"
 #include "Cruiser.h"
 #include "Destroyer.h"
