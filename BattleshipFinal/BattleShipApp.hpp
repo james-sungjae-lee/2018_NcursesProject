@@ -13,6 +13,8 @@ public:
   ~BattleShipApp();
   void Play();
   void PlayAI();
+  int turn;
+  int lastTurn;
 
 protected:
   void Init();
@@ -27,7 +29,6 @@ protected:
   InputPane* m_pInputPane;
 
   Position input;
-  int turn;
   string DestroyedShip;
   char AIAttackMap[8][8];
   std::vector<Position> nextAttack;

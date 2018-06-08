@@ -21,10 +21,10 @@ void BattleShipApp::PlayAI(){
   while (m_pGameManager->GameOver() == false) {
     m_pStatPane->ShipDestroyed(DestroyedShip);
     UpdateAI();
-    getch();
   }
   m_pStatPane->ShipDestroyed(DestroyedShip);
   m_pStatPane->GameWin(turn);
+  lastTurn = turn;
   Destroy();
 }
 
@@ -77,22 +77,25 @@ Position BattleShipApp::GetInputAI(){
     for (size_t y = 0; y < 8; y++) {
       AIAttackMap[x][y] = m_pGameManager->m_pAttacker->m_pMap->m_mapData[x][y];
       if (AIAttackMap[x][y] == 'H') {
-        if (x + 1 < 8 && AIAttackMap[x+1][y] == '-') {
+
+        if (x < 7 && AIAttackMap[x+1][y] == '-') {
           pushPosition.x = x + 1;
           pushPosition.y = y;
           nextAttack.push_back(pushPosition);
         }
-        if (x - 1 > -1 && AIAttackMap[x-1][y] == '-') {
-          pushPosition.x = x - 1;
-          pushPosition.y = y;
-          nextAttack.push_back(pushPosition);
-        }
-        if (y + 1 < 8 && AIAttackMap[x][y+1] == '-') {
+        if (y < 7 && AIAttackMap[x][y+1] == '-') {
           pushPosition.x = x;
           pushPosition.y = y + 1;
           nextAttack.push_back(pushPosition);
         }
-        if (y - 1 > -1 && AIAttackMap[x][y - 1] == '-') {
+
+        if (0 < x && AIAttackMap[x-1][y] == '-') {
+          pushPosition.x = x - 1;
+          pushPosition.y = y;
+          nextAttack.push_back(pushPosition);
+        }
+
+        if (0 < y && AIAttackMap[x][y-1] == '-') {
           pushPosition.x = x;
           pushPosition.y = y - 1;
           nextAttack.push_back(pushPosition);
